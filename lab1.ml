@@ -101,7 +101,7 @@ appropriate OCaml expression to assign the value to the variable
 exercise1 below.
 ......................................................................*)
 
-let exercise3 () = failwith "exercise3 not implemented" ;;
+let exercise3 () = ~- (5 - 3 );;
 
 (* Hint: The OCaml concrete expression
 
@@ -148,25 +148,20 @@ expressions below? Test your solution by uncommenting the examples
 error is generated.
 ......................................................................*)
 
-(*  <--- After you've replaced the ???s, remove this start of comment line
+let exercise6a : int = 42 ;;
 
-let exercise6a : ??? = 42 ;;
-
-let exercise6b : ??? =
+let exercise6b : string =
   let greet y = "Hello " ^ y
   in greet "World!";;
 
-let exercise6c : ??? =
+let exercise6c : float -> float =
   fun x -> x +. 11.1 ;;
 
-let exercise6d : ??? =
+let exercise6d : int -> bool =
   fun x -> x < x + 1 ;;
 
-let exercise6e : ??? =
+let exercise6e : int -> float -> int =
   fun x -> fun y -> x + int_of_float y ;;
-
-
-and remove this whole end of comment line too. ---->  *)
 
 (*======================================================================
 Part 3: First-order functional programming
@@ -197,9 +192,9 @@ functions in the lab to get some practice with automated unit testing.
 ......................................................................*)
 
 let square (x : int) : int  =
-  failwith "square not implemented" ;;
+  x * x ;;
 
-let exercise7 = 0 ;;
+let exercise7 = square 5 ;;
 
 (*......................................................................
 Exercise 8: Define a function say_hello that, given a name, creates a
@@ -218,7 +213,10 @@ to the function.
 ......................................................................*)
 
 let say_hello (name : string) : string =
-  failwith "say_hello not implemented";;
+  if name = "Gabby" || name = "gabby" then
+    "Hi " ^ name ^ ". Welcome home! How are you today?"
+  else
+    "Hi " ^ name ^ ". How are you today?";;
 
 (*......................................................................
 Exercise 9: Define a function, small_bills, that determines, given a
@@ -249,7 +247,7 @@ Given the year, write two functions that calculate the month
 (computus_month) and day (computus_day) of Easter in that year via the
 Computus function.
 
-In 2018, Easter took place on April 1st. Your functions should reflect 
+In 2018, Easter took place on April 1st. Your functions should reflect
 that:
 
   # computus_month 2018;;
