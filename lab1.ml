@@ -261,19 +261,7 @@ that:
 ......................................................................*)
 
 let computus_month (year : int) : int =
-  let a = year mod 19 
-  and b = year / 100
-  and c = year mod 100
-  and d = b / 4
-  and e = b mod 4
-  and f = (b + 8) / (25)
-  and g = (b - f + 1) / (3)
-  and h = ((19 * a) + b - d - g + 15) mod 30
-  and i = c / 4
-  and k = c mod 4
-  and l = (32 + (2 * e) + (2 * i) - h - k) mod 7
-  and m = (a + 11*h + 22*l) / (45 * l)
-  in (h + l - (7*m) + 114) / 31;;
+  failwith "computus_month not implemented" ;;
 
   let computus_day (year : int) : int =
   failwith "computus_day not implemented" ;;
