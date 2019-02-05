@@ -229,7 +229,10 @@ integers. For this lab, you may assume all prices given are
 non-negative.
 ......................................................................*)
 let small_bills (price : int) : bool =
-  failwith "small_bills not implemented" ;;
+  if price mod 20 == 0 then
+    false
+  else
+    true ;;
 
 (*......................................................................
 Exercise 10:
@@ -258,8 +261,21 @@ that:
 ......................................................................*)
 
 let computus_month (year : int) : int =
-  failwith "computus_month not implemented" ;;
-let computus_day (year : int) : int =
+  let a = year mod 19 
+  and b = year / 100
+  and c = year mod 100
+  and d = b / 4
+  and e = b mod 4
+  and f = (b + 8) / (25)
+  and g = (b - f + 1) / (3)
+  and h = ((19 * a) + b - d - g + 15) mod 30
+  and i = c / 4
+  and k = c mod 4
+  and l = (32 + (2 * e) + (2 * i) - h - k) mod 7
+  and m = (a + 11*h + 22*l) / (45 * l)
+  in (h + l - (7*m) + 114) / 31;;
+
+  let computus_day (year : int) : int =
   failwith "computus_day not implemented" ;;
 
 (*======================================================================
@@ -278,8 +294,10 @@ this exercise, you may assume all inputs will be positive.
 
 ......................................................................*)
 
-let factorial (x : int) : int =
-  failwith "factorial not implementated" ;;
+let rec factorial (x : int) : int =
+  if x = 0 then 1
+  else 
+    x * factorial (x-1) ;;
 
 (*......................................................................
 Exercise 12: Define a recursive function that sums all the elements
@@ -297,5 +315,12 @@ the mathematician Carl Freiedrich Gauss as a seven-year-old, *in his
 head*!)
 ......................................................................*)
 
-let sum_from_zero (x : int) : int =
-  failwith "sum_from_zero not implemented" ;;
+let rec sum_from_zero (x : int) : int =
+  if x = 0 then 0
+  else
+    if x > 0 then 
+      begin
+      x + sum_from_zero (x-1)
+      end
+    else
+    x + sum_from_zero (x+1);;
