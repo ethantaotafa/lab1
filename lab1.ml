@@ -261,10 +261,34 @@ that:
 ......................................................................*)
 
 let computus_month (year : int) : int =
-  failwith "computus_month not implemented" ;;
+  let a = year mod 19 in
+  let b = year / 100 in
+  let c = year mod 100 in
+  let d = b / 4 in
+  let e = b mod 4 in
+  let f = (b + 8) / (25) in
+  let g = (b - f + 1) / (3) in
+  let h = ((19 * a) + b - d - g + 15) mod 30 in
+  let i = c / 4 in
+  let k = c mod 4 in
+  let l = (32 + (2 * e) + (2 * i) - h - k) mod 7 in
+  let m = (a + 11*h + 22*l) / (45 * l) in
+  (h + l - (7*m) + 114) / 31;;
 
   let computus_day (year : int) : int =
-  failwith "computus_day not implemented" ;;
+      let a = year mod 19 in
+      let b = year / 100 in
+      let c = year mod 100 in
+      let d = b / 4 in
+      let e = b mod 4 in
+      let f = (b + 8) / 25 in
+      let g = (b - f + 1) / 3 in
+      let h = ((19 * a) + b - d - g + 15) mod 30 in
+      let i = c / 4 in
+      let k = c mod 4 in
+      let l = (32 + (2 * e) + (2 * i) - h - k) mod 7 in
+      let m = (a + (11 * h) + (22 * l)) / 451 in
+      ((h + l - (7 * m) + 114) mod 31) + 1 ;;
 
 (*======================================================================
 Part 4: Utilizing recursion
