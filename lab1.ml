@@ -272,7 +272,7 @@ let computus_month (year : int) : int =
   let i = c / 4 in
   let k = c mod 4 in
   let l = (32 + (2 * e) + (2 * i) - h - k) mod 7 in
-  let m = (a + 11*h + 22*l) / (45 * l) in
+  let m = (a + 11*h + 22*l) / (451) in
   (h + l - (7*m) + 114) / 31;;
 
   let computus_day (year : int) : int =
